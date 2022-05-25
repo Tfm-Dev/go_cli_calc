@@ -8,10 +8,10 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "go_cli_calc",
-	Short: "",
-	Long:  ``,
-	Run:   func(cmd *cobra.Command, args []string) { fmt.Println("This a calc with cobra cli!") },
+	Use:   "calc",
+	Short: "Hello Calculator",
+	Long:  `This a calculator cli using cobra`,
+	Run:   func(cmd *cobra.Command, args []string) { fmt.Println("This a calculator with cobra cli!") },
 }
 
 func Execute() {

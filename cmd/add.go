@@ -9,9 +9,10 @@ import (
 
 var addCmd = &cobra.Command{
 	Use:   "add",
-	Short: "",
-	Long:  ``,
-	Args:  cobra.MinimumNArgs(2),
+	Short: "Addition calculation",
+	Long: `Addition calculation with numbers integer or floating.
+Need two or more arguments to be added.`,
+	Args: cobra.MinimumNArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		float, _ := cmd.Flags().GetBool("float")
 		if float {
@@ -19,12 +20,12 @@ var addCmd = &cobra.Command{
 		} else {
 			odd, _ := cmd.Flags().GetBool("odd")
 			even, _ := cmd.Flags().GetBool("even")
-			addInt(args, odd, even)
+			sumInt(args, odd, even)
 		}
 	},
 }
 
-func addInt(args []string, odd bool, even bool) {
+func sumInt(args []string, odd bool, even bool) {
 	var sum int
 	for _, value := range args {
 		temp, err := strconv.Atoi(value)
@@ -39,15 +40,15 @@ func addInt(args []string, odd bool, even bool) {
 }
 
 func addFloat(args []string) {
-	var sum float64
+	var add float64
 	for _, value := range args {
 		temp, err := strconv.ParseFloat(value, 64)
 		if err != nil {
 			fmt.Println(err)
 		}
-		sum = sum + temp
+		add = add + temp
 	}
-	fmt.Printf("Sum of numbers: %s is %.2f\n", args, sum)
+	fmt.Printf("add of numbers: %s is %f\n", args, add)
 }
 
 func init() {
